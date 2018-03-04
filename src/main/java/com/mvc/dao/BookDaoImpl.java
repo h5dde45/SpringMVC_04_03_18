@@ -30,7 +30,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public void removeBook(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Book book = /*(Book)*/ session.load(Book.class, id);
+        Book book = (Book) session.load(Book.class, id);
         if (book != null) {
             session.delete(book);
             System.out.println("Book successfully delete. Book details: " + book);
@@ -40,7 +40,7 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Book getBookById(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Book book = /*(Book)*/ session.load(Book.class, id);
+        Book book = (Book) session.load(Book.class, id);
         System.out.println("Book successfully loaded. Book details: " + book);
         return book;
     }
