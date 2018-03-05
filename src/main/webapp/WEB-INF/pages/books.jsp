@@ -63,18 +63,23 @@
         <c:forEach items="${listBooks}" var="book">
             <tr>
                 <td>${book.id}</td>
-                <td><a href="/bookdata/${book.id}" target="_blank">${book.bookTitle}</a></td>
+                <td><a href="bookdata/${book.id}" target="_blank">${book.bookTitle}</a></td>
                 <td>${book.bookAuthor}</td>
-                <td>${book.bookPrice/100}.${book.bookPrice%100}</td>
-                <td><a href="<c:url value='/edit/${book.id}'/>">Edit</a></td>
-                <td><a href="<c:url value='/remove/${book.id}'/>">Delete</a></td>
+                <td>${book.bookPrice/100}</td>
+                <%--<td><a href="<c:url value='/edit/${book.id}'/>">Edit</a></td>--%>
+                <td><a href="edit/${book.id}">Edit</a></td>
+                <td><a href="remove/${book.id}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
 
-
+<c:if test="${empty book.bookTitle}">
 <h1>Add a Book</h1>
+</c:if>
+<c:if test="${!empty book.bookTitle}">
+<h1>Edit a Book</h1>
+</c:if>
 
 <c:url var="addAction" value="/books/add"/>
 
@@ -88,8 +93,8 @@
                     </form:label>
                 </td>
                 <td>
-                    <form:input path="id" readonly="true" size="8" disabled="true"/>
-                    <form:hidden path="id"/>
+                    <form:input path="id" readonly="true" size="8" />
+                    <form:hidden path=""/>
                 </td>
             </tr>
         </c:if>
@@ -116,7 +121,7 @@
         <tr>
             <td>
                 <form:label path="bookPrice">
-                    <spring:message text="bookPrice"/>
+                    <spring:message text="Price"/>
                 </form:label>
             </td>
             <td>

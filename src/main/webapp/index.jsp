@@ -5,6 +5,6 @@
 </head>
 <body>
 <h2>=======================</h2>
-<a href="/books" target="_blank">Books List</a>
+<a href="books" target="_blank">Books List</a>
 </body>
 </html>
